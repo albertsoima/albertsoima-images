@@ -1,7 +1,9 @@
 import sys
 from PIL import Image
-def avg(data):
-    return sum(data)/len(data)
+def median(data):
+    sorteddata = sorted(data)
+    index = len(sorteddata)/2
+    return sorteddata[index]
 
 def getpixel(img, x, y):
     w, h = img.size
@@ -28,15 +30,16 @@ def region3x3(img, x, y):
     return [me, N, NE, E, SE, S, SW, W, NW]
 
 # define your flip function here
-def blur(img):
+def denoise(img):
     w, h = img.size
     imgdup = img.copy()
     m = img.load()
     pixels = imgdup.load()
+    imgdup.show()
     for x in range(w):
         for y in range(h):
             r = region3x3(img, x, y)
-            pixels[x,y] = avg(r)
+            pixels[x,y] = median(r)
     return imgdup.show()
 
 if len(sys.argv)<=1:
@@ -48,4 +51,4 @@ img = img.convert("L")
 img.show()
 
 # call your flip function here
-blur(img)
+denoise(img)
