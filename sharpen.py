@@ -11,9 +11,11 @@ def minus(A, B):
     for x in range(w):
         for y in range(h):
             pixels[x, y] = A1[x,y] - B2[x,y]
-    return imgdup.show()
+    return imgdup
 
 img = open(sys.argv)
 img.show()
 edges = filter(img, laplace)
 sharpen = minus(img, edges)
+edges.show()
+sharpen.show()

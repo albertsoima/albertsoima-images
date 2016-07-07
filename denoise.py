@@ -20,7 +20,7 @@ def getpixel(img, x, y):
 def region3x3(img, x, y):
     me = getpixel(img, x, y)
     N = getpixel(img, x, y - 1)
-    NE = getpixel(img, x + 1, y - 1
+    NE = getpixel(img, x + 1, y - 1)
     E = getpixel(img, x + 1, y)
     SE = getpixel(img, x + 1, y + 1)
     S = getpixel(img, x, y + 1)
